@@ -1,0 +1,24 @@
+{
+  "kameralar": [
+    {
+      "kamera": "CAM-01",
+      "rtsp": "rtsp://<user>:<pass>@<camera-host>:554/stream1"
+    },
+    {
+      "kamera": "CAM-02",
+      "rtsp": "rtsp://<user>:<pass>@<camera-host>:554/stream1"
+    },
+    {
+      "kamera": "CAM-03",
+      "rtsp": "rtsp://<user>:<pass>@<camera-host>:554/stream1"
+    },
+    {
+      "kamera": "CAM-04",
+      "rtsp": "rtsp://<user>:<pass>@<camera-host>:554/stream1"
+    },
+    {
+      "kamera": "CAM-05",
+      "rtsp": "rtsp://<user>:<pass>@<camera-host>:554/stream1"
+    }
+  ]
+}

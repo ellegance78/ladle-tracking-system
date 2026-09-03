@@ -1,0 +1,30 @@
+# ============================================================
+# Ladle Tracking — BoT-SORT + ReID tracker ayarı
+# ============================================================
+# ByteTrack'ten farkı: nesnenin GÖRÜNÜMÜNÜ (renk/doku/şekil) hafızada tutar.
+# Pota kadrajdan çıkıp geri girdiğinde "bu az önce giden potaya benziyor"
+# deyip AYNI ID'yi verir — böylece #1'in geri gelince #9 olması engellenir.
+#
+# with_reid: True  → görünüm hafızası açık (asıl çözüm bu)
+# track_buffer     → kayıp bir track'in kaç kare hafızada tutulacağı.
+#                    Pota ~2 dk kadraj dışında kalabiliyor. 20 fps'te 2 dk = 2400 kare.
+#                    Yüksek tutuyoruz ki uzun kaybolmadan sonra da eşleşsin.
+# ============================================================
+
+tracker_type: botsort
+
+track_high_thresh: 0.25
+track_low_thresh: 0.1
+new_track_thresh: 0.25
+
+track_buffer: 3000          # ~2.5 dk @20fps — potanın uzun süre kaybolup dönmesini kaldırır
+match_thresh: 0.8
+fuse_score: True
+
+gmc_method: sparseOptFlow   # kamera sabit ama titreşim/zoom olursa telafi eder
+
+# --- ReID (görünüm bazlı yeniden tanıma) ---
+with_reid: True             # ASIL DEĞİŞİKLİK: görünüm hafızası açık
+model: auto                 # detektörün kendi özniteliklerini ReID için kullan
+proximity_thresh: 0.5
+appearance_thresh: 0.8      # geri gelen pota bu kadar benziyorsa aynı ID verilir
